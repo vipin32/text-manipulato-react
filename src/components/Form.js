@@ -13,6 +13,25 @@ export default function Form(props) {
         setUserText(newText);
     }
 
+    const handleExtraSpaces = () => {
+
+        let newText = userText.split(/[ ]+/);
+        setUserText(newText.join(' '));
+    }
+
+    const handleClear = () => {
+        setUserText('');
+    }
+
+    const handleNumbers = () => {
+
+        var numbers = userText.match(/\d/g);
+        numbers = numbers.join("");
+        console.log(numbers);
+    }
+
+    
+
     
 
     const handleTextOnChange = (event) => {
@@ -31,7 +50,10 @@ export default function Form(props) {
         </div>
 
         <button className="btn btn-primary" onClick={handleUpperClick}>Convert To Uppercase</button>
-        <button className="btn btn-primary mx-2" onClick={handleLowerClick}>Convert To Uppercase</button>
+        <button className="btn btn-primary mx-2" onClick={handleLowerClick}>Convert To Lowercase</button>
+        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+        <button className="btn btn-primary mx-2" onClick={handleNumbers}>Extract Numbers</button>
+        <button className="btn btn-primary mx-2" onClick={handleClear}>Clear</button>
       </div>
 
       <div className="container my-2">
