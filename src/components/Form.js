@@ -31,23 +31,21 @@ export default function Form(props) {
     }
 
     
-
-    
-
     const handleTextOnChange = (event) => {
         setUserText(event.target.value);
     }
 
     const [userText, setUserText] = useState('');
 
-
   return (
       <>
-      <div className="container my-2">
-        <h1>{props.heading}</h1>
+      <div className="container my-4" style={{color: props.mode === 'dark' ? 'white' : 'black'}}>
+        <h1 className='text-center'>{props.heading}</h1>
         <div className="form-group">
-            <textarea name="userText" id="userText" value={userText} onChange={handleTextOnChange} cols="30" rows="10" className="form-control"></textarea>
+            <textarea name="userText" id="userText" value={userText} onChange={handleTextOnChange} style={{backgroundColor: props.mode === 'dark' ? '#858585' : 'white', color: props.mode === 'dark' ? 'white' : 'black'}} cols="30" rows="10" className="form-control"></textarea>
         </div>
+
+        {/* #858585 */}
 
         <button className="btn btn-primary" onClick={handleUpperClick}>Convert To Uppercase</button>
         <button className="btn btn-primary mx-2" onClick={handleLowerClick}>Convert To Lowercase</button>
@@ -62,7 +60,7 @@ export default function Form(props) {
           <p>{0.08 * userText.split(' ').length} minutes read</p>
 
           <h3>Preview</h3>
-          <p>{userText}</p>
+          <p>{userText === '' ? 'Enter something in text box to preview it here' : userText}</p>
       </div>
 
       </>
